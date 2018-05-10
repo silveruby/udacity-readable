@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class PostEdit extends Component {
+class PostEditView extends Component {
   render() {
     return (
       <div className="create-edit-view">
@@ -33,4 +33,4 @@ class PostEdit extends Component {
   }
 }
 
-export default PostEdit;
+export default PostEditView;

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Root from './components/Root'
-import Category from './components/Category'
-import Post from './components/Post'
-import PostEdit from './components/PostEdit'
+import RootView from './components/RootView'
+import PostDetailsView from './components/PostDetailsView'
+import PostEditView from './components/PostEditView'
 import { Switch, Route } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
@@ -12,18 +11,10 @@ class App extends Component {
     return (
       <div className="App">
         <Switch>
-          <Route exact path='/' render={() => (
-            <Root />
-          )}/>
-          <Route exact path='/category' render={() => (
-            <Category />
-          )}/>
-          <Route exact path='/post' render={() => (
-            <Post />
-          )}/>
-          <Route exact path='/post-edit' render={() => (
-            <PostEdit />
-          )}/>
+          <Route exact path="/" component={RootView}/>
+          <Route exact path="/:category" component={RootView}/>
+          <Route exact path="/:category/:post_id" component={PostDetailsView} />
+          <Route exact path="/:category/:post_id/edit" component={PostDetailsView} />
         </Switch>
       </div>
     );
