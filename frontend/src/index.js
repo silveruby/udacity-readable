@@ -21,8 +21,6 @@ const store = createStore(
     )
 );
 
-console.log("sotre: ", store)
-
 ReactDOM.render(<BrowserRouter>
 					<Provider store={ store }>
 						<App />
