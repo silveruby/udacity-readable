@@ -8,9 +8,14 @@ class Comment extends Component {
   }
 
   onEdit = () => {
+    console.log("onedit")
     this.setState({
       isEdit: !this.state.isEdit
     })
+  }
+
+  saveEdit = (value) => {
+    console.log("saveedit")
   }
 
   render() {
@@ -19,19 +24,16 @@ class Comment extends Component {
 
     if(this.state.isEdit){
       return (
-        <li key={comment.id}>
           <form>
-            <input type="text" name="comment_body" value={comment.body} />
-            <input type="submit" value="Save" />
+            <input type="text" name="comment_body" value={comment.body} onChange={this.saveEdit(this.value)}/>
           </form>
-        </li>
       )}
     else{
       return(
-       <li key={comment.id}>
-          <p>{comment.body}</p>
-          <p><a href="" onClick={this.onEdit}>edit</a></p>
-        </li>
+          <div>
+            <p>{comment.body}</p>
+            <p><a href="" onClick={this.onEdit}>edit</a></p>
+          </div>
       )}
   }
 }

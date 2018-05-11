@@ -16,7 +16,10 @@ class CommentList extends Component {
         </h2>
         <div className="comments">
           <ul>
-          { comments.map(comment => <Comment comment={comment} post={post} /> ) }
+          { comments.map(comment =>
+              <li key={comment.id}>
+                  <Comment comment={comment} post={post} />
+              </li> ) }
           </ul>
 
         </div>
