@@ -1,4 +1,10 @@
 .App {
   width: 80%;
-  margin: auto;
+  margin: auto
+}
+
+.post-container{
+	padding: 1em;
+	margin: 1em 0em;
+	background-color: #EEE;
 }

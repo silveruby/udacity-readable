@@ -12,7 +12,7 @@ class Menu extends Component {
   render() {
     return (
         <div className="pure-menu pure-menu-horizontal">
-          <Link className="pure-menu-heading pure-menu-link" to='/'>all</Link>
+          <Link className="pure-menu-heading pure-menu-link" to='/'>Home</Link>
           <ul className="pure-menu-list">
             { this.props.categories.map((category) => (
               <li className="pure-menu-item" key={category.name}><Link className="pure-menu-link" to={`/${category.name}`}>{category.name}</Link></li>
