@@ -12,14 +12,11 @@ class CategoryList extends Component {
   render() {
     console.log("categories: ", this.props)
     return (
-        <nav className="navbar">
-          <ul>
-            <li key="home"><Link to='/'>home</Link></li>
-            { this.props.categories.map((category) => (
-              <li key={category.id}><Link to={`/${category.path}`}>{category.name}</Link></li>
-            ))}
-          </ul>
-        </nav>
+        <select name="category">
+          { this.props.categories.map((category) => (
+            <option key={category.id} value={category.name}>{category.name}</option>
+          ))}
+        </select>
     );
   }
 }

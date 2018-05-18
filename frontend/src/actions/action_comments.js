@@ -1,13 +1,16 @@
 // types
 import {
 	ADD_CMT,
-	REMOVE_CMT,
+	DELETE_CMT,
 	EDIT_CMT,
-	GET_CMTS
+	GET_CMTS,
+  VOTE_CMT
 } from './types'
 
 // api
 import * as api from './api'
+
+import uuidv1 from 'uuid/v1'
 
 // get comments
 const getCommentsHelper = (comments) => {
@@ -31,36 +34,110 @@ export const getComments = (post_id) => {
   }
 }
 
-export function addComment (){
-	return {
-		type: ADD_CMT
-	}
-}
-
-export function removeComment (){
-	return{
-		type: REMOVE_CMT
-	}
-}
-
 // edit comment
 const editCommentHelper = (comment) => {
   return {
-    type: GET_CMTS,
+    type: EDIT_CMT,
     comment
   }
 }
 
 // edit comment
-export const editComment = (comment_id) => {
+export const editComment = (id, body) => {
   return dispatch => {
-    fetch(`${api.url}comments/${comment_id}`, {headers: api.headers})
+    fetch(`${api.url}comments/${id}`,
+      {
+        method: 'PUT',
+        headers: {...api.headers, 'Content-Type': 'application/json'},
+        body: JSON.stringify({ body, timestamp: Date.now() })
+      })
       .then(response => {
         if (!response.ok) {
           throw response
         } else  return response.json()
       })
-      .then(comment => dispatch(getCommentsHelper(comment)))
+      .then(comment => dispatch(editCommentHelper(comment)))
+      .catch(error => api.showError(error));
+  }
+}
+
+// delete comment
+const deleteCommentHelper = (id) => {
+  return {
+    type: DELETE_CMT,
+    id
+  }
+}
+
+// delete comment
+export const deleteComment = (id) => {
+  return dispatch => {
+    fetch(`${api.url}comments/${id}`,
+      {
+        method: 'DELETE',
+        headers: {...api.headers, 'Content-Type': 'application/json'}
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw response
+        } else  return response.json()
+      })
+      .then(dispatch(deleteCommentHelper(id)))
+      .catch(error => api.showError(error));
+  }
+}
+
+// add comment
+const addCommentHelper = (comment) => {
+  return {
+    type: ADD_CMT,
+    comment
+  }
+}
+
+// add comment
+export const addComment = (data) => {
+  return dispatch => {
+    fetch(`${api.url}comments`,
+      {
+        method: 'POST',
+        headers: {...api.headers, 'Content-Type': 'application/json'},
+        body: JSON.stringify({...data, id: uuidv1(), timestamp: Date.now()})
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw response
+        } else  return response.json()
+      })
+      .then(comment => dispatch(addCommentHelper(comment)))
+      .catch(error => api.showError(error));
+  }
+}
+
+
+// vote comment
+const voteCommentHelper = (comment) => {
+  return {
+    type: VOTE_CMT,
+    comment
+  }
+}
+
+// vote comment
+export const voteComment = (id, vote) => {
+  return dispatch => {
+    fetch(`${api.url}comments/${id}`,
+      {
+        method: 'POST',
+        headers: {...api.headers, 'Content-Type': 'application/json'},
+        body: JSON.stringify({option: vote})
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw response
+        } else  return response.json()
+      })
+      .then(comment => dispatch(voteCommentHelper(comment)))
       .catch(error => api.showError(error));
   }
 }

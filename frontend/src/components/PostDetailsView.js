@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getComments } from '../actions/action_comments'
 import { getPosts } from '../actions/action_posts'
 import PostDetails from './PostDetails'
 import CommentList from './CommentList'
+import CommentAdd from './CommentAdd'
 
 // api
 import * as api from '../actions/api'
@@ -13,13 +13,13 @@ class PostDetailsView extends Component {
 
   componentDidMount() {
     const {category, post_id} = this.props.match.params
-    if (this.props.comments.length == 0) { this.props.getComments(post_id) }
-    if (this.props.posts.length == 0) { this.props.getPosts() }
+    if (this.props.comments.length === 0) { this.props.getComments(post_id) }
+    if (this.props.posts.length === 0) { this.props.getPosts() }
   }
 
   render() {
     const {category, post_id} = this.props.match.params
-    const post = this.props.posts.find(p => p.id == post_id)
+    const post = this.props.posts.find(p => p.id === post_id)
     const comments = this.props.comments
 
     if(!post){
@@ -31,7 +31,7 @@ class PostDetailsView extends Component {
     else if(this.props.match.url.match("/edit$")){
       return(
         // edit post
-        <div className="create-edit-view">
+        <div className="pure-g">
           <form>
             <div>
               <label>Title:</label>
@@ -61,11 +61,12 @@ class PostDetailsView extends Component {
     }
     else{
       return (
-        <div className="post-details-comments">
+        <div>
           <PostDetails post={post} />
-          <CommentList post={post} comments={comments} />
+          <CommentList comments={comments} post={post} />
+          <CommentAdd post={post} />
         </div>
-      );
+      )
     }
   }
 }

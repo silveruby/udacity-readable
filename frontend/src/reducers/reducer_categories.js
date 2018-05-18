@@ -2,8 +2,6 @@ import  {
     GET_CATEGORIES
 } from '../actions/types'
 
-import * as posts from '../actions/action_posts'
-
 export default function (state = [], payload) {
     switch (payload.type) {
         case GET_CATEGORIES:

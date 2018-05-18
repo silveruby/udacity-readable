@@ -6,19 +6,19 @@ import { getCategories } from '../actions/action_categories'
 class Menu extends Component {
 
   componentDidMount() {
-    if (this.props.categories.length == 0) { this.props.getCategories() }
+    if (this.props.categories.length === 0) { this.props.getCategories() }
   }
 
   render() {
     return (
-        <nav className="navbar">
-          <ul>
-            <li key="home"><Link to='/'>home</Link></li>
+        <div className="pure-menu pure-menu-horizontal">
+          <Link className="pure-menu-heading pure-menu-link" to='/'>all</Link>
+          <ul className="pure-menu-list">
             { this.props.categories.map((category) => (
-              <li key={category.name}><Link to={`/${category.name}`}>{category.name}</Link></li>
+              <li className="pure-menu-item" key={category.name}><Link className="pure-menu-link" to={`/${category.name}`}>{category.name}</Link></li>
             ))}
           </ul>
-        </nav>
+        </div>
     );
   }
 }

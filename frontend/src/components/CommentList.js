@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Comment from './Comment'
 
 class CommentList extends Component {
 
+  state = {
+    isAdd: false
+  }
+
+  onAdd = () => {
+    this.setState({
+      isAdd: !this.state.isAdd
+    })
+  }
+
   render() {
     const post = this.props.post
-    const comments =  this.props.comments
+    const comments =  this.props.comments.filter(c => c.deleted === false)
 
     return (
-      <div className="post-comments">
-        <h2>
-          <span>Comments </span>
-          <button>Add a comment</button>
-        </h2>
-        <div className="comments">
-          <ul>
-          { comments.map(comment =>
-              <li key={comment.id}>
-                  <Comment comment={comment} post={post} />
-              </li> ) }
-          </ul>
-
+      <div className="pure-g">
+        <div className="pure-u-1-2">
+          <h3>Comments</h3>
+          <div>
+            { comments.map(comment => <Comment comment={comment} post={post} /> )}
+          </div>
         </div>
       </div>
     )

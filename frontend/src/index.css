@@ -1,5 +1,9 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+body{
+	color: #333;
+}
+
+.post-container{
+	padding: 1em;
+	margin: 1em 0em;
+	background-color: #EEE;
 }
