@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getCategories } from '../actions/action_categories'
 
 class CategoryList extends Component {
 
   componentDidMount() {
-    if (this.props.categories.length == 0) { this.props.getCategories() }
+    if (this.props.categories.length === 0) { this.props.getCategories() }
   }
 
   render() {
-    console.log("categories: ", this.props)
     return (
         <select name="category">
           { this.props.categories.map((category) => (
-            <option key={category.id} value={category.name}>{category.name}</option>
+            <option key={category.name} value={category.name}>{category.name}</option>
           ))}
         </select>
     );

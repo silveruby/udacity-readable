@@ -22,7 +22,7 @@ class CommentList extends Component {
         <div className="pure-u-1-2">
           <h3>Comments</h3>
           <div>
-            { comments.map(comment => <Comment comment={comment} post={post} /> )}
+            { comments.map(comment => <div key={comment.id}><Comment comment={comment} post={post} /></div> )}
           </div>
         </div>
       </div>

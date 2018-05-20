@@ -98,6 +98,12 @@ class PostDetails extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    posts : state.posts || [],
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return{
     editPost: (id, data) => dispatch(editPost(id, data)),
@@ -106,4 +112,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(PostDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetails);

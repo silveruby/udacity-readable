@@ -6,58 +6,21 @@ import PostDetails from './PostDetails'
 import CommentList from './CommentList'
 import CommentAdd from './CommentAdd'
 
-// api
-import * as api from '../actions/api'
-
 class PostDetailsView extends Component {
 
   componentDidMount() {
-    const {category, post_id} = this.props.match.params
+    const post_id = this.props.match.params.post_id
     if (this.props.comments.length === 0) { this.props.getComments(post_id) }
     if (this.props.posts.length === 0) { this.props.getPosts() }
   }
 
   render() {
-    const {category, post_id} = this.props.match.params
+    const post_id = this.props.match.params.post_id
     const post = this.props.posts.find(p => p.id === post_id)
     const comments = this.props.comments
 
     if(!post){
       return null
-    }
-    else if (post.delete){
-      return "post deleted"
-    }
-    else if(this.props.match.url.match("/edit$")){
-      return(
-        // edit post
-        <div className="pure-g">
-          <form>
-            <div>
-              <label>Title:</label>
-              <input type="text" name="title" value={post.title} />
-            </div>
-            <div>
-              <label>Body:</label>
-              <input type="text" name="body" value={post.body} />
-            </div>
-            <div>
-              <label>Author:</label>
-              <input type="text" name="author" value={post.author} />
-            </div>
-            <div>
-              <label>Category:</label>
-              <select name="category">
-                <option value="value_">value_</option>
-                <option value="value_">value_</option>
-                <option value="value_">value_</option>
-                <option value="value_">value_</option>
-              </select>
-            </div>
-            <input type="submit" value="Create post" />
-          </form>
-        </div>
-      )
     }
     else{
       return (
@@ -76,7 +39,7 @@ const mapStateToProps = state => {
     posts : state.posts || [],
     comments : state.comments || []
   }
-};
+}
 
 const mapDispatchToProps = dispatch => {
   return{

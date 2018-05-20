@@ -23,7 +23,7 @@ class PostList extends Component {
             </h2>
           </div>
           <div className="pure-u-1-2">
-            { posts.filter(post => post.category === this.props.category).map(post => <Post post={post} /> )}
+            { posts.filter(post => post.category === this.props.category).map(post => <div key={post.id}><Post post={post} /></div> )}
           </div>
         </div>
       )
@@ -37,7 +37,7 @@ class PostList extends Component {
             </h2>
           </div>
           <div className="pure-u-1-2">
-            { posts.map(post => <Post post={post} /> )}
+            { posts.map(post => <div key={post.id}><Post post={post} /></div> )}
           </div>
         </div>
       )
@@ -49,7 +49,7 @@ const mapStateToProps = state => {
   return{
     posts: state.posts || []
   }
-};
+}
 
 const mapDispatchToProps = dispatch => {
   return{

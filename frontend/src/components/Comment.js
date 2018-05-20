@@ -68,6 +68,11 @@ class Comment extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    comments : state.comments || [],
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return{
@@ -78,4 +83,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Comment);
+export default connect(mapStateToProps, mapDispatchToProps)(Comment);
