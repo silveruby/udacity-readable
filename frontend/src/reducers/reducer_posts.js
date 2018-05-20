@@ -24,7 +24,6 @@ export default function (state = [], payload) {
                 }
                 return post
             })
-            return state
         case EDIT_POST:
             return state.map(post => {
                 if(post.id === payload.post.id){

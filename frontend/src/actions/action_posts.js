@@ -44,7 +44,7 @@ export const getPosts = (category) => {
 	          throw response
 	        } else  return response.json()
 	      })
-	      .then(posts => dispatch(getPostsHelper(posts)))
+	      .then(posts => dispatch(getPostHelper(posts)))
 	      .catch(error => api.showError(error));
 	  }
 	}
@@ -71,7 +71,7 @@ export const getPost = (post_id) => {
 	          throw response
 	        } else  return response.json()
 	      })
-	      .then(post => dispatch(getPostsHelper(post)))
+	      .then(post => dispatch(getPostHelper(post)))
 	      .catch(error => api.showError(error));
 	  }
 	}
