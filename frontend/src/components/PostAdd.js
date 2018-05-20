@@ -17,7 +17,6 @@ class PostAdd extends Component {
 
   onSave = (e) => {
     e.preventDefault()
-    console.log(e.target[3])
     const title =  e.target[0].value
     const body =  e.target[1].value
     const author =  e.target[2].value
