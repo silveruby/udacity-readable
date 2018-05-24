@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getComments } from '../actions/action_comments'
-import { getPosts } from '../actions/action_posts'
+import { getSinglePost } from '../actions/action_posts'
 import PostDetails from './PostDetails'
 import CommentList from './CommentList'
 import CommentAdd from './CommentAdd'
@@ -11,7 +11,7 @@ class PostDetailsView extends Component {
   componentDidMount() {
     const post_id = this.props.match.params.post_id
     if (this.props.comments.length === 0) { this.props.getComments(post_id) }
-    if (this.props.posts.length === 0) { this.props.getPosts() }
+    if (this.props.posts.length === 0) { this.props.getSinglePost() }
   }
 
   render() {
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return{
-    getPosts : (post_id) => dispatch(getPosts(post_id)),
+    getSinglePost : (post_id) => dispatch(getSinglePost(post_id)),
     getComments: (post_id) => dispatch(getComments(post_id))
   }
 }

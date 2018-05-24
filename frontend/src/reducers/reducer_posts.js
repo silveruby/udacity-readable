@@ -14,7 +14,7 @@ export default function (state = [], payload) {
         case GET_POSTS:
             return [...state, ...payload.posts]
         case GET_POST:
-            return [...state, ...payload.post]
+            return [...payload.post]
         case ADD_POST:
             return [...state, payload.post]
         case DELETE_POST:
