@@ -4,18 +4,14 @@ import PostDetailsView from './components/PostDetailsView'
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Switch>
-          <Route exact path="/" component={RootView}/>
-          <Route exact path="/:category" component={RootView}/>
-          <Route exact path="/:category/:post_id" component={PostDetailsView} />
-        </Switch>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div className="App">
+    <Switch>
+      <Route exact path="/" component={RootView}/>
+      <Route exact path="/:category" component={RootView}/>
+      <Route exact path="/:category/:post_id" component={PostDetailsView} />
+    </Switch>
+  </div>
+);
 
 export default App;

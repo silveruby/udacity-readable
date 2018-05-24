@@ -20,7 +20,8 @@ class CommentAdd extends Component {
     const body =  e.target[0].value
     const author =  e.target[1].value
     const parentId = this.props.post.id
-    this.props.addComment({body, author, parentId})
+    const comment = {body, author, parentId}
+    this.props.addComment(comment)
     this.props.updateCommentCount(this.props.post.id, 1)
 
     this.setState({

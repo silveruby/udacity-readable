@@ -6,7 +6,8 @@ import {
 	GET_POSTS,
 	GET_POST,
 	UPDATE_POST_CMT,
-	VOTE_POST
+	VOTE_POST,
+  SORT_POST
 } from './types'
 
 // api
@@ -59,7 +60,7 @@ const getPostHelper = (post) => {
 }
 
 // get post
-export const getPost = (post_id) => {
+export const getSinglePost = (post_id) => {
 	if (post_id == null ){
 		console.log("need post id to get post")
 	}
@@ -190,5 +191,13 @@ export const votePost = (id, vote) => {
       })
       .then(post => dispatch(votePostHelper(post)))
       .catch(error => api.showError(error));
+  }
+}
+
+// vote post
+export const sortPosts = (sortby) => {
+  return {
+    type: SORT_POST,
+    sortby
   }
 }

@@ -8,12 +8,11 @@ This repository includes the code for the backend API Server (pre-built by Udaci
 
 To use the web app:
 
-* Install and start the API server
+* Start the API server
     - `cd api-server`
     - `npm install`
     - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
+* In another terminal window, start the Front-end
     - `cd frontend`
     - `npm start`
 

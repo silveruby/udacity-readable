@@ -20,7 +20,18 @@ class PostDetailsView extends Component {
     const comments = this.props.comments
 
     if(!post){
-      return null
+      return (
+        <div>
+          <p>404 Error</p>
+        </div>
+      )
+    }
+    else if(post.deleted){
+       return (
+        <div>
+          <p>Post is deleted</p>
+        </div>
+      )
     }
     else{
       return (

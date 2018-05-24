@@ -19,9 +19,10 @@ class CategoryList extends Component {
   }
 }
 
+
 const mapStateToProps = state => {
   return{
-    categories: state.categories || []
+    categories: state.categories || ['react', 'redux', 'udacity']
   }
 };
 

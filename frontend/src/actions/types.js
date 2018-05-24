@@ -6,6 +6,7 @@ export const GET_POSTS = 'GET_POSTS'
 export const GET_POST = 'GET_POST'
 export const UPDATE_POST_CMT = 'UPDATE_POST_CMT'
 export const VOTE_POST = 'VOTE_POST'
+export const SORT_POST = 'SORT_POST'
 
 // Categories
 export const GET_CATEGORIES = 'GET_CATEGORIES'

@@ -33,6 +33,7 @@ class Post extends Component {
   onDelete = (e) => {
     e.preventDefault()
     this.props.deletePost(e.target.id)
+    this.context.router.replace('/')
   }
 
   onUpvote = (e) => {

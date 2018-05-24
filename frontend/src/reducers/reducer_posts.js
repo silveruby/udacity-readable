@@ -5,7 +5,8 @@ import  {
     GET_POSTS,
     GET_POST,
     UPDATE_POST_CMT,
-    VOTE_POST
+    VOTE_POST,
+    SORT_POST
 } from '../actions/types'
 
 export default function (state = [], payload) {
@@ -47,6 +48,13 @@ export default function (state = [], payload) {
                 }
                 return post
             })
+        case SORT_POST:
+            if (payload.sortby === 'LOHI'){
+                return state.sort((a,b) => a.voteScore - b.voteScore)
+            }
+            else{
+                return state.sort((a,b) => b.voteScore - a.voteScore)
+            }
         default:
             return state
     }
