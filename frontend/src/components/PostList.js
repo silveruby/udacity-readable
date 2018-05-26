@@ -6,11 +6,14 @@ import Post from './Post'
 class PostList extends Component {
 
   componentDidMount() {
-    if (this.props.posts.length === 0) { this.props.getPosts() }
+    if (this.props.posts.length === 0) {
+      this.props.getPosts()
+    }
   }
 
   onSort = (e) => {
     this.props.sortPosts(e.target.value)
+    this.forceUpdate()
   }
 
   render() {
@@ -25,7 +28,7 @@ class PostList extends Component {
             <h2>
               <span>{this.props.category} Posts </span>
             </h2>
-            <form className="pure-form">
+            <form className="pure-form sort-container">
               <label>Sort by </label>
               <select id="sort" onChange={this.onSort}>
                 <option value="HILO">Highest to lowest score</option>
@@ -46,6 +49,13 @@ class PostList extends Component {
             <h2>
               <span>All Posts </span>
             </h2>
+            <form className="pure-form sort-container">
+              <label>Sort by </label>
+              <select id="sort" onChange={this.onSort}>
+                <option value="HILO">Highest to lowest score</option>
+                <option value="LOHI">Lowest to highest score</option>
+              </select>
+            </form>
           </div>
           <div className="pure-u-1-2">
             { posts.map(post => <div key={post.id}><Post post={post} /></div> )}

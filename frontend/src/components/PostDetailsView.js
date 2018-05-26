@@ -5,13 +5,14 @@ import { getSinglePost } from '../actions/action_posts'
 import PostDetails from './PostDetails'
 import CommentList from './CommentList'
 import CommentAdd from './CommentAdd'
+import Menu from './Menu'
 
 class PostDetailsView extends Component {
 
   componentDidMount() {
     const post_id = this.props.match.params.post_id
     if (this.props.comments.length === 0) { this.props.getComments(post_id) }
-    if (this.props.posts.length === 0) { this.props.getSinglePost() }
+    if (this.props.posts.length === 0) { this.props.getSinglePost(post_id) }
   }
 
   render() {
@@ -22,14 +23,24 @@ class PostDetailsView extends Component {
     if(!post){
       return (
         <div>
-          <p>404 Error</p>
+          <Menu />
+          <div className="pure-g">
+            <div className="pure-u-1 post-container">
+              <p>404 Error</p>
+            </div>
+          </div>
         </div>
       )
     }
     else if(post.deleted){
        return (
         <div>
-          <p>Post is deleted</p>
+          <Menu />
+          <div className="pure-g">
+            <div className="pure-u-1 post-container">
+              <p>Post deleted</p>
+            </div>
+          </div>
         </div>
       )
     }

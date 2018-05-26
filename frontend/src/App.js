@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import RootView from './components/RootView'
 import PostDetailsView from './components/PostDetailsView'
 import { Switch, Route } from 'react-router-dom'

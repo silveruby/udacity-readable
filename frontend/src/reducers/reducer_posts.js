@@ -12,7 +12,7 @@ import  {
 export default function (state = [], payload) {
     switch (payload.type) {
         case GET_POSTS:
-            return [...state, ...payload.posts]
+            return [...state, ...payload.posts.sort((a,b) => b.voteScore - a.voteScore)]
         case GET_POST:
             return [...payload.post]
         case ADD_POST:
