@@ -4,7 +4,6 @@ import {
 	DELETE_POST,
 	EDIT_POST,
 	GET_POSTS,
-	GET_POST,
 	UPDATE_POST_CMT,
 	VOTE_POST,
   SORT_POST
@@ -45,34 +44,7 @@ export const getPosts = (category) => {
 	          throw response
 	        } else  return response.json()
 	      })
-	      .then(posts => dispatch(getPostHelper(posts)))
-	      .catch(error => api.showError(error));
-	  }
-	}
-}
-
-// get post
-const getPostHelper = (post) => {
-  return {
-    type: GET_POST,
-    post
-  }
-}
-
-// get post
-export const getSinglePost = (post_id) => {
-	if (post_id == null ){
-		console.log("need post id to get post")
-	}
-	else{
-	  return dispatch => {
-	    fetch(`${api.url}posts/${post_id}`, {headers: api.headers})
-	      .then(response => {
-	        if (!response.ok) {
-	          throw response
-	        } else  return response.json()
-	      })
-	      .then(post => dispatch(getPostHelper(post)))
+	      .then(posts => dispatch(getPostsHelper(posts)))
 	      .catch(error => api.showError(error));
 	  }
 	}

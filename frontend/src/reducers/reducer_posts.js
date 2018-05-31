@@ -3,7 +3,6 @@ import  {
     DELETE_POST,
     EDIT_POST,
     GET_POSTS,
-    GET_POST,
     UPDATE_POST_CMT,
     VOTE_POST,
     SORT_POST
@@ -13,8 +12,6 @@ export default function (state = [], payload) {
     switch (payload.type) {
         case GET_POSTS:
             return [...state, ...payload.posts.sort((a,b) => b.voteScore - a.voteScore)]
-        case GET_POST:
-            return [...payload.post]
         case ADD_POST:
             return [...state, payload.post]
         case DELETE_POST:
